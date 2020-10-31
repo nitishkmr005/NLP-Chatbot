@@ -3,7 +3,7 @@ import sqlite3
 import json
 from datetime import datetime
 
-timeframe = '2006-03'
+timeframe = '2009-05'
 sql_transaction = []
 
 connection = sqlite3.connect('{}.db'.format(timeframe))
@@ -91,15 +91,15 @@ if __name__ == '__main__':
     row_counter = 0
     paired_rows = 0
 
-    with open(r'C:\Users\nitis\OneDrive\Jupyter Notebooks\My Notebooks\My_GitHub_Repo\NLP-Chatbot_1\data\RC_2006-03', buffering=1000) as f:
+    with open(r'C:\Users\nitis\OneDrive\Jupyter Notebooks\My Notebooks\My_GitHub_Repo\RC_{}'.format(timeframe), buffering=1000) as f:
         for row in f:
             row_counter += 1
             row = json.loads(row)
-            parent_id = row['parent_id']
+            parent_id = row['parent_id'].split('_')[1]
             body = format_data(row['body'])
             created_utc = row['created_utc']
             score = row['score']
-            comment_id = row['link_id']
+            comment_id = row['id']
             subreddit = row['subreddit']
             parent_data = find_parent(parent_id)
             if score >= 2:
