@@ -32,8 +32,9 @@ def find_parent(pid):
         #print(str(e))
         return False
 
-    with open('C:\Users\nitis\OneDrive\Jupyter Notebooks\My Notebooks\1.8. My GitHub Repo\NLP-Chatbot\data/RC_{}'.format(timeframe), buffering=1000) as f:
+    with open("C:\Users\nitis\OneDrive\Jupyter Notebooks\My Notebooks\1.8. My GitHub Repo\NLP-Chatbot_1\data\RC_2006-03", buffering=1000) as f:
         for row in f:
+            print(row)
             row_counter += 1
             row = json.loads(row)
             parent_id = row['parent_id']
